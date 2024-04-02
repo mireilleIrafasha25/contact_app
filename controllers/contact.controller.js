@@ -53,6 +53,23 @@ res.status(500).json({
 })
 }
 },
+GetbyEmail:async(req,res)=>
+{
+    const phone1=req.params.phone
+    const contacts=await contactModel.findOne({phone:phone1})
+try{
+    res.status(200).json({
+        contact:contacts
+    })
+}
+catch(error)
+{
+console.log(error.message)
+res.status(500).json({
+    message:"Internal server Error"
+})
+}
+},
 Updatecontact:async(req,res)=>
 {
     const updatedcontact=await contactModel.findByIdAndUpdate(req.params.id,req.body,{set:true})
