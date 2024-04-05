@@ -1,0 +1,175 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Contact API",
+      "description": "API documentation for Contact CRUD operations",
+      "version": "1.0.0"
+    },
+    "host": "localhost:6001",
+    "basePath": "",
+    "schemes": ["http", "https"],
+    "paths": {
+      "/create": {
+        "post": {
+          "summary": "Create a new Worker",
+          "description": "Create a new Worker of RCR organization",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "Contact_body",
+              "schema": {
+                "$ref": "#/definitions/Contact"
+              },
+              "required": true,
+              "description": "contact object"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Contact created"
+            }
+          }
+        }
+      },
+      "/update/{id}": {
+        "put": {
+          "summary": "Update a contact by ID",
+          "description": "Update a contact by ID",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the contact to update",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "Contact_body",
+              "schema": {
+                "$ref": "#/definitions/Contact"
+              },
+              "required": true,
+              "description": "Updated contact object"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "contact updated"
+            },
+            "404": {
+              "description": "contact not found"
+            }
+          }
+        }
+    },
+    "/delete/{id}":
+    {
+        "delete": {
+          "summary": "Delete a contact by ID",
+          "description": "Delete a contact by ID",
+          "tags": ["Contacts"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the contact to delete",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "contact deleted"
+            },
+            "404": {
+              "description": "contact not found"
+            }
+          }
+        }},
+        "/list":
+        {
+        "get": {
+          "summary": "Get  all contact",
+          "description": "Get all contacts ",
+          "tags": ["Contacts"],
+
+          "responses": {
+            "200": {
+              "description": "Successful response"
+            },
+            "404": {
+              "description": "Contact not found"
+            }
+          }
+        }
+        
+      },
+    "getbyphone/{phone}":
+      {
+      "get": {
+        "summary": "Get a contact by phone",
+        "description": "Get a contact by phone",
+        "tags": ["Contacts"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the contact to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      }
+      
+    }
+    
+    
+  },
+  "definitions": {
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string",
+          "default":"Mireille"
+        },
+        "lastname": {
+          "type": "string",
+          "default":"Irafasha"
+        },
+        "phone": {
+          "type": "string",
+          "default":"0783010765"
+        },
+        "address": {
+          "type": "string",
+          "default":"Kigali_Kimironko"
+        },
+        "email": {
+          "type": "string",
+          "default":"@gmail.com"
+  
+        },
+        "workPhone": {
+          "type": "string",
+          "default":"Mobile"
+        }
+      },
+      "required": ["firstname", "lastname", "phone", "email", "address","workPhone"]
+    }
+  }
+
+}
+  
